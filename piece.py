@@ -4,8 +4,9 @@ piece object
 '''
 
 class piece(object):
-	def __init__(self, loc, isKing, color, player):
-		self.loc = loc
+	def __init__(self, x, y, isKing, color, player):
+		self.x = x
+		self.y = y
 		self.isKing = isKing
 		self.color = color
 		self.player = player
@@ -14,11 +15,7 @@ class piece(object):
 		return (self)
 
 	def printPiece(self):
-		print self.loc
-		print self.isKing
-		print self.color
-		print self.player
-		print (self.loc + self.isKing + self.color + self.player)
+		print 'Location:' , self.x, ',' , self.y , 'Is King:' , self.isKing ,'Color:' , self.color , 'Player Number:' , self.player
 
 	def changeLoc(self, newLoc):
 		self.loc = newLoc
@@ -31,3 +28,5 @@ class piece(object):
 
 	def changePlayer(self, newPlayer):
 		self.player = newPlayer
+
+
