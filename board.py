@@ -21,10 +21,10 @@ class board(object):
 		return self.board
 
 	def addPiece(self, board, x, y, color):
-		if (board[x][y] == 0):
+		if (self.board[x][y] == 0):
 			return 'not legal move!'
 		self.board[x][y] = color
-		return board
+		return self.board
 
 	def makeBoard(self, arr):
 		board = [[1 for x in range(8)] for x in range(8)]
