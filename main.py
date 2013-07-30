@@ -3,32 +3,28 @@ Aaron Gotlieb
 '''
 
 from board import *
-from piece import *
+#from piece import *
 
-print("Welcome to (Z)Checkers!")
+print("Welcome to (zork)Checkers!")
 print("Ready Player 1")
 
 
 j = [[1 for x in range(8)] for x in range(8)]
 b = board(j)
 
-for x in range (8):
-	print(b.board[x])
 
-xloc = 1
-yloc = 2
-isKing = False
-color = 3
-player = 1
+b.printBoard(b.board)
 
-p = piece(xloc, yloc, isKing, color, player)
-pie = p.getPiece()
-p.printPiece()
-b.addPiece(b, p.x, p.y, p.color)
+b.setUp(b.board)
 
-for x in range (8):
-	print(b.board[x])
+b.printBoard(b.board)
 
+b.getColor()
+
+b.normalMove(b.board, 0 , 2, 2, 0)
+#def normalMove(self, board, x, y, pieceColor, direction):
+#if (direction == 0 and pieceColor == 2): #red move down right
+b.printBoard(b.board)
 
 
 
