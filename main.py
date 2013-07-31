@@ -8,13 +8,13 @@ from board import *
 print("Welcome to (zork)Checkers!")
 print("Ready Player 1")
 
+j = 'nothing'
+b = board()
+print("flag1")
+print(b)
+#b.printBoard(b)
 
-j = [[1 for x in range(8)] for x in range(8)]
-b = board(j)
-
-
-b.printBoard(b.board)
-
+print("flag2")
 b.setUp(b.board)
 
 b.printBoard(b.board)

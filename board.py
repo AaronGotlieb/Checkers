@@ -6,16 +6,23 @@ board object
 from piece import *
 
 class board(object):
-	def __init__(self, board):
+	def __init__(self):
+		'''
 		self.board = [[0 for x in range(8)] for x in range(8)]
-		j = [[0 for x in range(8)] for x in range(8)]
+		tmp = [[0 for x in range(8)] for x in range(8)]
 		for x in range (0, 8):
 			for y in range (0, 8):
 				if (y % 2 == 1 and x % 2 == 1):
-					j[x][y] = 1
+					tmp[x][y] = 1
 				if (y % 2 == 0 and x % 2 == 0):
-					j[x][y] = 1
-		self.board = j
+					tmp[x][y] = 1
+		self.board = tmp
+		'''
+		tmp = self.makeBoard()
+		for x in range (0, 8):
+			print(tmp[x])
+		tmp = self.setUp(tmp)
+		print('flagOne')
 
 	def printBoard(self, board):
 		print ('*****')
@@ -61,21 +68,23 @@ class board(object):
 	def setUp(self, board):
 	# sets up checkers board with 2 and 3 representing red and black respectivly
 
+		board = self.makeBoard()
 		redPieces = self.pieceArray(2)
 		blackPieces = self.pieceArray(3)
 
 		for y in range (0, 8):
 			for x in range (0, 3):
 				if (y % 2 == 1 and x % 2 == 1):
-					board[x][y] = redPieces[x]
-				if (y % 2 == 0 and x % 2 == 0):
-					board[x][y] = redPieces[x]
+					board[x][y] = redPieces[x].getColor()
+				elif (y % 2 == 0 and x % 2 == 0):
+					board[x][y] = redPieces[x].getColor()
 		for y in range (0, 8):
 			for x in range (5, 8):
 				if (y % 2 == 1 and x % 2 == 1):
-					board[x][y] = blackPieces[x]
+					board[x][y] = blackPieces[x].getColor()
 				if (y % 2 == 0 and x % 2 == 0):
-					board[x][y] = blackPieces[x]
+					board[x][y] = blackPieces[x].getColor()
+		return board
 
 	def pieceArray(self, color):
 		#(self, x, y, isKing, pieceColor)
@@ -84,10 +93,7 @@ class board(object):
 			arr[x] = piece(0,0,0,color)
 		return arr
 
-
-
-'''
-	def makeBoard(self, arr):
+	def makeBoard(self):
 		board = [[0 for x in range(8)] for x in range(8)]
 		for x in range (0, 8):
 			for y in range (0, 8):
@@ -97,6 +103,7 @@ class board(object):
 					board[x][y] = 1
 		return board
 
+'''
 board inicilization:
 				j = [[0 for x in range(8)] for x in range(8)]
 		for x in range (0, 8):
