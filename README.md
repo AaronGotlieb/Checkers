@@ -1,7 +1,7 @@
 Checkers
 ========
 
-A Checkers game built in Python 
+A Checkers game built in Python
 	require Python 3.0
 
 inheritance diagram:
@@ -28,6 +28,7 @@ Piece state codes:
 
 
 Board:
+
 	alpha 0.1
 		*****
 		r 0 r 0 r 0 r 0
@@ -39,7 +40,18 @@ Board:
 		b 0 b 0 b 0 b 0
 		0 b 0 b 0 b 0 b
 		*****
-		all r / b / 0 are piece objects
+
+	alpha 0.2
+		   0 1 2 3 4 5 6 7
+
+		0  r 0 r 0 r 0 r 0
+		1  0 r 0 r 0 r 0 r
+		2  r 0 r 0 r 0 r 0
+		3  0 0 0 0 0 0 0 0
+		4  0 0 0 0 0 0 0 0
+		5  0 b 0 b 0 b 0 b
+		6  b 0 b 0 b 0 b 0
+		7  0 b 0 b 0 b 0 b
 
 
 
