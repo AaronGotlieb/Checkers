@@ -29,7 +29,7 @@ Piece state codes:
 
 Board:
 
-	alpha 0.1
+	alpha 0.1:
 		*****
 		r 0 r 0 r 0 r 0
 		0 r 0 r 0 r 0 r
@@ -41,7 +41,7 @@ Board:
 		0 b 0 b 0 b 0 b
 		*****
 
-	alpha 0.2
+	alpha 0.2:
 		   0 1 2 3 4 5 6 7
 
 		0  r 0 r 0 r 0 r 0

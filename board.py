@@ -10,16 +10,21 @@ class board(object):
 		self.boardArray = self.makeBoard()
 		self.boardArray = self.setUp(self.boardArray)
 
-	def printBoard(self, board):
-		print ('*****')
+	def printBoard(self):
+		print ('   0 1 2 3 4 5 6 7  x')
+		print('')
 		for x in range (0, 8):
+			print(x, end= '  ')
 			for y in range (0, 8):
 				print(self.boardArray[x][y].getColor(), end=' ')
 			print('')
-		print ('*****')
+		print('y')
 
 	def getBoardArray(self):
 		return self.boardArray
+
+	def getSquare(self, x, y):
+		self.boardArray[x][y].printPiece()
 
 	def addPiece(self, board, x, y, color):
 		if (self.board[x][y] == 0):
@@ -28,10 +33,10 @@ class board(object):
 		self.board[x][y] = color
 
 	def removePiece(self, board, x, y):
-		if (self.board[x][y] == 0):
+		if (self.board[x][y].getColor() == 0):
 			print('not legal move!')
 			return
-		self.board[x][y] = 1
+		self.board[x][y].changeColor(0)
 
 	def normalMove(self, board, x, y, pieceColor, direction):
 		self.removePiece(board, x, y)
@@ -45,7 +50,7 @@ class board(object):
 			for x in range (0, 3):
 				if (y % 2 == 1 and x % 2 == 1):
 					board[x][y].changeColor('r')
-				elif (y % 2 == 0 and x % 2 == 0):
+				if (y % 2 == 0 and x % 2 == 0):
 					board[x][y].changeColor('r')
 		for y in range (0, 8):
 			for x in range (5, 8):
@@ -67,9 +72,15 @@ class board(object):
 		for x in range (0, 8):
 			for y in range (0, 8):
 				if (x % 2 == 1):
-					board[x][y] = piece(x,y,0,0,0)
-				if (x % 2 == 0):
-					board[x][y] = piece(x,y,0,0,1)
+					if (y % 2 == 1):
+						board[x][y] = piece(x,y,0,0,0)
+					else:
+						board[x][y] = piece(x,y,0,0,1)
+				else:
+					if (y % 2 == 1):
+						board[x][y] = piece(x,y,0,0,1)
+					else:
+						board[x][y] = piece(x,y,0,0,0)
 		return board
 
 

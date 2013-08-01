@@ -7,13 +7,16 @@ from board import *
 
 print("Welcome to (zork)Checkers!")
 print("Ready Player 1")
-arr = [[0 for x in range(8)] for x in range(8)]
-j = 'nothing'
+arr = []
 b = board(arr)
-arr = b.getBoardArray()
-print("flag1")
 print(b)
-b.printBoard(b)
+b.printBoard()
+
+for x in range (0,8):
+	for y in range(0,8):
+		b.getSquare(x,y)
+
+
 
 #def normalMove(self, board, x, y, pieceColor, direction):
 #if (direction == 0 and pieceColor == 2): #red move down right
