@@ -4,11 +4,12 @@ piece object
 '''
 
 class piece(object):
-	def __init__(self, x, y, isKing, pieceColor):
+	def __init__(self, x, y, isKing, pieceColor, square):
 		self.x = x
 		self.y = y
 		self.isKing = isKing
 		self.pieceColor = pieceColor
+		self.square = square
 
 	def getPiece(self):
 		return (self)
@@ -24,10 +25,20 @@ class piece(object):
 
 	def changeColor(self, newColor):
 		self.pieceColor = newColor
+		if (newColor != 'r' or newColor != 'b'):
+			self.changeSquare(0)
 
 	def changePlayer(self, newPlayer):
 		self.player = newPlayer
 
 	def getColor(self):
 		return (self.pieceColor)
+
+	def getSquare(self):
+		return (self.square)
+
+	def changeSquare(self, newSquare):
+		self.square = newSquare
+
+
 

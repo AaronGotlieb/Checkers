@@ -6,46 +6,20 @@ board object
 from piece import *
 
 class board(object):
-	def __init__(self):
-		'''
-		self.board = [[0 for x in range(8)] for x in range(8)]
-		tmp = [[0 for x in range(8)] for x in range(8)]
-		for x in range (0, 8):
-			for y in range (0, 8):
-				if (y % 2 == 1 and x % 2 == 1):
-					tmp[x][y] = 1
-				if (y % 2 == 0 and x % 2 == 0):
-					tmp[x][y] = 1
-		self.board = tmp
-		'''
-		tmp = self.makeBoard()
-		for x in range (0, 8):
-			print(tmp[x])
-		tmp = self.setUp(tmp)
-		print('flagOne')
+	def __init__(self, boardArray):
+		self.boardArray = self.makeBoard()
+		self.boardArray = self.setUp(self.boardArray)
 
 	def printBoard(self, board):
 		print ('*****')
 		for x in range (0, 8):
-			print('')
 			for y in range (0, 8):
-				if (y % 2 == 1 and x % 2 == 1):
-					if (board[x][y] == 0 or board[x][y] == 1 or board[x][y] == 2 or board[x][y] == 3):
-						print(board[x][y], end=' ')
-					else:
-						print (board[x][y].getColor(), end=' ')
-				elif (y % 2 == 0 and x % 2 == 0):
-					if (board[x][y] == 0 or board[x][y] == 1 or board[x][y] == 2 or board[x][y] == 3):
-						print(board[x][y], end=' ')
-					else:
-						tmp = board[x][y]
-						print(tmp.getColor(), end=' ')
-						#print (board[x][y].getColor, end=' ')
-		print('')
+				print(self.boardArray[x][y].getColor(), end=' ')
+			print('')
 		print ('*****')
 
-	def getBoard(self):
-		return self.board
+	def getBoardArray(self):
+		return self.boardArray
 
 	def addPiece(self, board, x, y, color):
 		if (self.board[x][y] == 0):
@@ -63,27 +37,22 @@ class board(object):
 		self.removePiece(board, x, y)
 		if (direction == 0 and pieceColor == 2): #red move down right
 			self.addPiece(board, x + 1, y + 1, pieceColor)
-			print("flag")
 
 	def setUp(self, board):
-	# sets up checkers board with 2 and 3 representing red and black respectivly
-
-		board = self.makeBoard()
-		redPieces = self.pieceArray(2)
-		blackPieces = self.pieceArray(3)
+	# sets up checkers board with 'r' and 'b' representing red and black respectivly
 
 		for y in range (0, 8):
 			for x in range (0, 3):
 				if (y % 2 == 1 and x % 2 == 1):
-					board[x][y] = redPieces[x].getColor()
+					board[x][y].changeColor('r')
 				elif (y % 2 == 0 and x % 2 == 0):
-					board[x][y] = redPieces[x].getColor()
+					board[x][y].changeColor('r')
 		for y in range (0, 8):
 			for x in range (5, 8):
 				if (y % 2 == 1 and x % 2 == 1):
-					board[x][y] = blackPieces[x].getColor()
+					board[x][y].changeColor('b')
 				if (y % 2 == 0 and x % 2 == 0):
-					board[x][y] = blackPieces[x].getColor()
+					board[x][y].changeColor('b')
 		return board
 
 	def pieceArray(self, color):
@@ -97,23 +66,12 @@ class board(object):
 		board = [[0 for x in range(8)] for x in range(8)]
 		for x in range (0, 8):
 			for y in range (0, 8):
-				if (y % 2 == 1 and x % 2 == 1):
-					board[x][y] = 1
-				if (y % 2 == 0 and x % 2 == 0):
-					board[x][y] = 1
+				if (x % 2 == 1):
+					board[x][y] = piece(x,y,0,0,0)
+				if (x % 2 == 0):
+					board[x][y] = piece(x,y,0,0,1)
 		return board
 
-'''
-board inicilization:
-				j = [[0 for x in range(8)] for x in range(8)]
-		for x in range (0, 8):
-			for y in range (0, 8):
-				if (y % 2 == 1 and x % 2 == 1):
-					j[x][y] = 1
-				if (y % 2 == 0 and x % 2 == 0):
-					j[x][y] = 1
-		self.board = j
-'''
 
 
 
