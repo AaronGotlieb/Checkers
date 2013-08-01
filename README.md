@@ -1,7 +1,8 @@
 Checkers
 ========
 
-A Checkers game built in python
+A Checkers game built in Python 
+	require Python 3.0
 
 inheritance diagram:
 	main.py <== board.py <== piece.py
