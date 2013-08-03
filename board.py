@@ -76,7 +76,7 @@ class board(object):
 		openSpots = self.boardArray[x][y].getOpenSpots()
 		if(direction == 'topLeft'):
 			openSpots = openSpots[0:2]
-			if(openSpots[0] == -1 and openSpots[0] == -1):
+			if(openSpots[0] == -1 and openSpots[1]] == -1):
 				print('Sorry, but that move is illigal')
 				return
 		if(direction == 'topRight'):
@@ -86,8 +86,17 @@ class board(object):
 		if(direction == 'botRight'):
 			openSpots = openSpots[6:8]
 		if(self.boardArray[x][y].isKing() == 0): #not king
-			if(self.boardArray[x][y].getColor() == 'b'): #red
-				tmpMove = tmp[]
+			if(self.boardArray[x][y].getColor() == 'r'): #red
+				if(direction == 'topLeft' or direction == 'topRight'):
+					print('Sorry, you need to be a king to move backwards')
+					return
+			if(self.boardArray[x][y].getColor() == 'b'): #black
+				if(direction == 'botRight' or direction == 'botLeft'):
+					print('Sorry, you need to be a king to move backwards')
+					return
+		# more tests will be needed above but for now...
+		# actual move
+
 
 
 	def openMovesTranslator(self, x, y):
