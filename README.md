@@ -18,7 +18,8 @@ Piece state codes:
 		1 = left
 
 	pieceColor:
-		0 = not a piece
+		0 = not a piece and unavaliable move
+		1 = not a piece but avaliable move
 		r = red
 		b = black
 
@@ -26,6 +27,12 @@ Piece state codes:
 		0 = no
 		1 = yes
 
+	openSlots:
+		openSlots = [0,0,0,0]
+		0 = not avaliable move
+		1 = avaliable move
+
+		openSlots = [topLeft, topRight, botLeft, botRight]
 
 Board:
 

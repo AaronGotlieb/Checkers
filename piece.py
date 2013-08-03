@@ -10,12 +10,22 @@ class piece(object):
 		self.isKing = isKing
 		self.pieceColor = pieceColor
 		self.square = square
+		self.openSpots = [0,0,0,0]
 
 	def getPiece(self):
 		return (self)
 
-	def printPiece(self):
-		print('Location: (' , self.x, ',' , self.y , ') Is King:' , self.isKing ,'Color:' , self.pieceColor, 'Square:', self.square)
+	def getColor(self):
+		return (self.pieceColor)
+
+	def getSquare(self):
+		return (self.square)
+
+	def getOpenSpots(self):
+		return (self.openSpots)
+
+	def changeSquare(self, newSquare):
+		self.square = newSquare
 
 	def changeLoc(self, newLoc):
 		self.loc = newLoc
@@ -29,14 +39,30 @@ class piece(object):
 	def changePlayer(self, newPlayer):
 		self.player = newPlayer
 
-	def getColor(self):
-		return (self.pieceColor)
+	def resetSquare(self):
+		self.isKing = 0
+		self.pieceColor = 0
+		self.openSpots = [0,0,0,0]
 
-	def getSquare(self):
-		return (self.square)
+	def printPiece(self):
+		print('Location: (' , self.y, ',' , self.x , ') Is King:' , self.isKing ,'Color:' , self.pieceColor, 'Square:', self.square, 'openSpots:', self.openSpots)
 
-	def changeSquare(self, newSquare):
-		self.square = newSquare
+#avaiable moves
+	def topLeft(self, topLeft):
+		self.openSpots[0] = topLeft
+
+	def topRight(self, topRight):
+		self.openSpots[1] = topRight
+
+	def botLeft(self, botLeft):
+		self.openSpots[2] = botLeft
+
+	def botRight(self, botRight):
+		self.openSpots[3] = botRight
+
+	def avaliableTranslate(self, allAvaliable):
+		self.openSpots = allAvaliable
+
 
 
 
