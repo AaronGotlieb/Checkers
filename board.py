@@ -33,9 +33,6 @@ class board(object):
 			return
 		self.board[x][y] = color
 
-	def removePiece(self, board, x, y):
-		return
-
 	def openMoves(self):
 		# checks what moves are open for all pieces and updates the each piece object to represent
 		# what moves are avaliable within the piece object under 'openSpots'
@@ -76,7 +73,7 @@ class board(object):
 		openSpots = self.boardArray[x][y].getOpenSpots()
 		if(direction == 'topLeft'):
 			openSpots = openSpots[0:2]
-			if(openSpots[0] == -1 and openSpots[1]] == -1):
+			if(openSpots[0] == -1 and openSpots[1] == -1):
 				print('Sorry, but that move is illigal')
 				return
 		if(direction == 'topRight'):
@@ -85,7 +82,7 @@ class board(object):
 			openSpots = openSpots[4:6]
 		if(direction == 'botRight'):
 			openSpots = openSpots[6:8]
-		if(self.boardArray[x][y].isKing() == 0): #not king
+		if(self.boardArray[x][y].getIsKing() == 0): #not king
 			if(self.boardArray[x][y].getColor() == 'r'): #red
 				if(direction == 'topLeft' or direction == 'topRight'):
 					print('Sorry, you need to be a king to move backwards')
@@ -96,8 +93,8 @@ class board(object):
 					return
 		# more tests will be needed above but for now...
 		# actual move
-
-
+		self.boardArray[openSpots[0]][openSpots[1]] = self.boardArray[x][y]
+		self.boardArray[x][y].resetSquare()
 
 	def openMovesTranslator(self, x, y):
 		# openSlots = [topLeft, topRight, botLeft, botRight]  <== copied from readme
@@ -149,6 +146,7 @@ class board(object):
 		return arr
 
 	def makeBoard(self):
+		# def __init__(self, x, y, isKing, pieceColor, square): <== pieces constructor
 		board = [[0 for x in range(8)] for x in range(8)]
 		for x in range (0, 8):
 			for y in range (0, 8):

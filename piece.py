@@ -24,6 +24,9 @@ class piece(object):
 	def getOpenSpots(self):
 		return (self.openSpots)
 
+	def getIsKing(self):
+		return (self.isKing)
+
 	def changeSquare(self, newSquare):
 		self.square = newSquare
 
@@ -42,7 +45,10 @@ class piece(object):
 	def resetSquare(self):
 		self.isKing = 0
 		self.pieceColor = 0
-		self.openSpots = [0,0,0,0]
+		tmp = self.openSpots
+		tmp = len(tmp)
+		for x in range (0, tmp):
+			self.openSpots[x] = 0
 
 	def printPiece(self):
 		print('Location: (' , self.y, ',' , self.x , ') Is King:' , self.isKing ,'Color:' , self.pieceColor, 'Square:', self.square, 'openSpots:', self.openSpots)
