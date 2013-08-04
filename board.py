@@ -27,12 +27,6 @@ class board(object):
 	def getSquare(self, x, y):
 		self.boardArray[x][y].printPiece()
 
-	def addPiece(self, board, x, y, color):
-		if (self.board[x][y] == 0):
-			print('not legal move!')
-			return
-		self.board[x][y] = color
-
 	def openMoves(self):
 		# checks what moves are open for all pieces and updates the each piece object to represent
 		# what moves are avaliable within the piece object under 'openSpots'
@@ -93,8 +87,12 @@ class board(object):
 					return
 		# more tests will be needed above but for now...
 		# actual move
-		self.boardArray[openSpots[0]][openSpots[1]] = self.boardArray[x][y]
+		print(openSpots)
+
+		a = self.boardArray[x][y].getColor()
+		b = self.boardArray[x][y].getSquare()
 		self.boardArray[x][y].resetSquare()
+		self.boardArray[openSpots[1]][openSpots[0]] = piece(openSpots[1],openSpots[0],0,a,b)
 
 	def openMovesTranslator(self, x, y):
 		# openSlots = [topLeft, topRight, botLeft, botRight]  <== copied from readme
