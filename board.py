@@ -87,8 +87,6 @@ class board(object):
 					return
 		# more tests will be needed above but for now...
 		# actual move
-		print(openSpots)
-
 		a = self.boardArray[x][y].getColor()
 		b = self.boardArray[x][y].getSquare()
 		self.boardArray[x][y].resetSquare()
