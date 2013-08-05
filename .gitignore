@@ -1,6 +1,7 @@
 *.py[cod]
 
 /tmp.py
+/run.sh
 
 # C extensions
 *.so

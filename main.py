@@ -12,15 +12,19 @@ b = board(arr)
 print(b)
 b.printBoard()
 
-b.normalMove(2,2,'botLeft')
+#b.normalMove(2,2,'botLeft')
+b.normalMove(2,0,'botRight')
+b.normalMove(2,6, 'botRight')
+b.normalMove(5,1,'topLeft')
+b.normalMove(5,7,'topLeft')
 
 b.printBoard()
 
-'''
+
 for x in range (0,8):
 	for y in range(0,8):
 		b.getSquare(x,y)
-'''
+
 
 
 #def normalMove(self, board, x, y, pieceColor, direction):

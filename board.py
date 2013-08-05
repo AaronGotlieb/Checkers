@@ -91,6 +91,7 @@ class board(object):
 		b = self.boardArray[x][y].getSquare()
 		self.boardArray[x][y].resetSquare()
 		self.boardArray[openSpots[1]][openSpots[0]] = piece(openSpots[1],openSpots[0],0,a,b)
+		self.openMoves()
 
 	def openMovesTranslator(self, x, y):
 		# openSlots = [topLeft, topRight, botLeft, botRight]  <== copied from readme
