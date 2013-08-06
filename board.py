@@ -61,6 +61,19 @@ class board(object):
 					self.boardArray[x][y].topLeft(0)
 				self.openMovesTranslator(x,y)
 
+	def kingMove(self, x, y, direction):
+		openSpots = self.boardArray[x][y].getOpenSpots()
+		if(direction == 'topLeft'):
+			openSpots = openSpots[0:2]
+			if(openSpots[0] == -1 and openSpots[1] == -1):
+				print('Sorry, but that move is illigal')
+				return
+		if(direction == 'topRight'):
+			openSpots = openSpots[2:4]
+		if(direction == 'botLeft'):
+			openSpots = openSpots[4:6]
+		if(direction == 'botRight'):
+			openSpots = openSpots[6:8]
 
 	def normalMove(self, x, y, direction):
 		#movement rules
