@@ -13,10 +13,10 @@ print(b)
 b.printBoard()
 
 #b.normalMove(2,2,'botLeft')
-b.normalMove(2,0,'botRight')
-b.normalMove(2,6, 'botRight')
-b.normalMove(5,1,'topLeft')
-b.normalMove(5,7,'topLeft')
+b.kingMove(2,0,'botRight')
+b.kingMove(2,6, 'botRight')
+b.kingMove(5,1,'topLeft')
+b.kingMove(5,7,'topLeft')
 
 b.printBoard()
 

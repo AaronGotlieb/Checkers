@@ -74,6 +74,11 @@ class board(object):
 			openSpots = openSpots[4:6]
 		if(direction == 'botRight'):
 			openSpots = openSpots[6:8]
+		a = self.boardArray[x][y].getColor()
+		b = self.boardArray[x][y].getSquare()
+		self.boardArray[x][y].resetSquare()
+		self.boardArray[openSpots[1]][openSpots[0]] = piece(openSpots[1],openSpots[0],1,a,b)
+		self.openMoves()
 
 	def normalMove(self, x, y, direction):
 		#movement rules
