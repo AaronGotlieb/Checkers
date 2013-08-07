@@ -61,7 +61,7 @@ class board(object):
 					self.boardArray[x][y].topLeft(0)
 				self.openMovesTranslator(x,y)
 
-	def kingMove(self, x, y, direction):
+	def royalMove(self, x, y, direction):
 		openSpots = self.boardArray[x][y].getOpenSpots()
 		if(direction == 'topLeft'):
 			openSpots = openSpots[0:2]
@@ -74,6 +74,8 @@ class board(object):
 			openSpots = openSpots[4:6]
 		if(direction == 'botRight'):
 			openSpots = openSpots[6:8]
+
+		#actual move
 		a = self.boardArray[x][y].getColor()
 		b = self.boardArray[x][y].getSquare()
 		self.boardArray[x][y].resetSquare()
