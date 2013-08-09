@@ -43,22 +43,28 @@ def movePiece(x, y, direction):
 		b.royalMove(x,y,direction)
 
 # game loop
+flag = True
 while True:
+	x = y = direc = 0
 	b.printBoard()
 	print('enter a piece and where you want to move it.')
 	x = coordinateCheck('x') # pass in name of number so its user identifiable
 	y = coordinateCheck('y')
-	direction = direction()
+	direc = direction()
 	#print(x , ' ' , y , ' ' , direction)
-	movePiece(x,y,direction)
+	try:
+		movePiece(x,y,direc)
+	except Exception:
+		print('Illigal move detected, please try again')
+		continue
 	b.printBoard()
 	break
 '''
 #b.normalMove(2,2,'botLeft')
-b.kingMove(2,0,'botRight')
-b.kingMove(2,6, 'botRight')
-b.kingMove(5,1,'topLeft')
-b.kingMove(5,7,'topLeft')
+b.normalMove(2,0,'botRight')
+b.royalMove(2,6, 'botRight')
+b.royalMove(5,1,'topLeft')
+b.royalMove(5,7,'topLeft')
 
 b.printBoard()
 

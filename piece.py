@@ -17,6 +17,7 @@ class piece(object):
 
 	def getColor(self):
 		return (self.pieceColor)
+		#return (self.isKing)
 
 	def getSquare(self):
 		return (self.square)
