@@ -6,7 +6,7 @@ EOF
 python3 main.py<<EOF
 1
 2
-topLeft
+topRight
 EOF
 python3 main.py<<EOF
 1
