@@ -101,6 +101,11 @@ class board(object):
 			if(self.boardArray[x][y].getColor() == 'b'): #black
 				if(direction == 'botRight' or direction == 'botLeft'):
 					raise Exception('Sorry, but that move is illigal')
+		tmp = self.boardArray[0][0].getIsKing  # really hacky way of taking care of the [0][0]
+		self.boardArray[0][0].changeKing(1337) # special case...
+		if(openSpots[0] == 0 and openSpots[1] == 0 and self.boardArray[openSpots[1]][openSpots[0]].getIsKing != 1337):
+			raise Exception('Sorry, but that move is illigal')
+		self.boardArray[0][0].changeKing(tmp)
 		# more tests will be needed above but for now...
 		# actual move
 		a = self.boardArray[x][y].getColor()

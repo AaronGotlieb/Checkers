@@ -38,9 +38,17 @@ def direction():
 
 def movePiece(x, y, direction):
 	if (b.boardArray[x][y].getIsKing() == 0):
-		b.normalMove(x,y,direction)
+		try:
+			b.normalMove(x,y,direction)
+		except Exception:
+			print('Illigal move detected, please try again')
+			#continue
 	else:
-		b.royalMove(x,y,direction)
+		try:
+			b.royalMove(x,y,direction)
+		except Exception:
+			print('Illigal move detected, please try again')
+			#continue
 
 # game loop
 flag = True
@@ -53,12 +61,16 @@ while True:
 	direc = direction()
 	#print(x , ' ' , y , ' ' , direction)
 	try:
-		movePiece(x,y,direc)
+		movePiece(y,x,direc)
 	except Exception:
 		print('Illigal move detected, please try again')
 		continue
 	b.printBoard()
 	break
+
+for x in range (0,8):
+	for y in range(0,8):
+		b.getSquare(x,y)
 '''
 #b.normalMove(2,2,'botLeft')
 b.normalMove(2,0,'botRight')

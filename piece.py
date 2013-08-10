@@ -45,7 +45,7 @@ class piece(object):
 
 	def resetSquare(self):
 		self.isKing = 0
-		self.pieceColor = 0
+		self.pieceColor = 1
 		tmp = self.openSpots
 		tmp = len(tmp)
 		for x in range (0, tmp):
