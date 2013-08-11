@@ -9,9 +9,9 @@ inheritance diagram:
 
 	main.py
   		 \
-			board.py
-     			\
-				piece.py
+		board.py
+    		\
+			piece.py
 
 
 Piece state codes:
