@@ -31,8 +31,9 @@ class piece(object):
 	def changeSquare(self, newSquare):
 		self.square = newSquare
 
-	def changeLoc(self, newLoc):
-		self.loc = newLoc
+	def changeXY(self, x, y):
+		self.x = x
+		self.y = y
 
 	def changeKing(self, newIsKing):
 		self.isKing = newIsKing

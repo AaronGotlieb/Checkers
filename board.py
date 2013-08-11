@@ -87,23 +87,66 @@ class board(object):
 		myColor = self.boardArray[x][y].getColor()
 		if(myColor == 'r'):
 			if(self.boardArray[y+1][x+1].getColor() == 'b' or self.boardArray[y+1][x-1].getColor() == 'b'): # 1 search ahead
-				if(self.boardArray[x+2][y+2].getColor() == 1 or self.boardArray[y+2][x-2].getColor() == 1):
+				if(self.boardArray[y+2][x+2].getColor() == 1 or self.boardArray[y+2][x-2].getColor() == 1):
 					return True
 		else:
 			if(myColor == 'b'):
 				if(self.boardArray[y-1][x+1].getColor() == 'r' or self.boardArray[y-1][x-1].getColor() == 'r'): # 1 search ahead
-					if(self.boardArray[x-2][y+2].getColor() == 1 or self.boardArray[y-2][x-2].getColor() == 1):
+					if(self.boardArray[y-2][x+2].getColor() == 1 or self.boardArray[y-2][x-2].getColor() == 1):
 						return True
 		return False
 
+	def takeHelper(self,y,x,yy,xx,yyy,xxx):
+		self.boardArray[yyy][xxx].changeColor(self.boardArray[y][x].getColor())
+		self.boardArray[y][x].resetSquare()
+		self.boardArray[yy][xx].resetSquare()
+
+
 	def normalTake(self,x,y,direction):
-		myColor = self.boardArray[x][y].getColor()
-		if(self.normalTakeCheck(x,y) == False)
-			raise Exception('Sorry, but the move you are attempting is illegal')
+		myColor = self.boardArray[y][x].getColor()
+		#piece = self.boardArray[y][x]
+
 		if(myColor == 'r'):
+			if(direction == 'topRight' or direction == 'topLeft'):
+				raise Exception('Sorry, but the move you are attempting is illegal')
+			if(direction == 'botLeft'):
+				if(self.boardArray[y+1][x-1].getColor() == 'b'):
+					if(self.boardArray[y+2][x-2].getColor() == 1): #bot left ^ 2 is blank and available to take
+						self.takeHelper(y,x,y+1,x-1,y+2,x-2)
+					else:
+						raise Exception('Sorry, but the move you are attempting is illegal')
+				else:
+						raise Exception('Sorry, but the move you are attempting is illegal')
+			if(direction == 'botRight'):
+				if(self.boardArray[y+1][x+1].getColor() == 'b'):
+					if(self.boardArray[y+2][x+2].getColor() == 1): #bot right ^ 2 is blank and available to take
+						self.takeHelper(y,x,y+1,x+1,y+2,x+2)
+					else:
+						raise Exception('Sorry, but the move you are attempting is illegal')
+				else:
+						raise Exception('Sorry, but the move you are attempting is illegal')
 
-
-		return True
+		elif(myColor == 'b'):
+			if(direction == 'botRight' or direction == 'botLeft'):
+				raise Exception('Sorry, but the move you are attempting is illegal')
+			if(direction == 'topLeft'):
+				if(self.boardArray[y-1][x-1].getColor() == 'r'):
+					if(self.boardArray[y-2][x-2].getColor() == 1): #top left ^ 2 is blank and available to take
+						self.takeHelper(y,x,y-1,x-1,y-2,x-2)
+					else:
+						raise Exception('Sorry, but the move you are attempting is illegal')
+				else:
+					raise Exception('Sorry, but the move you are attempting is illegal')
+			if(direction == 'topRight'):
+				if(self.boardArray[y-1][x+1].getColor() == 'r'):
+					if(self.boardArray[y-2][x+2].getColor() == 1): #top right ^ 2 is blank and available to take
+						self.takeHelper(y,x,y-1,x+1,y-2,x+2)
+					else:
+						raise Exception('Sorry, but the move you are attempting is illegal')
+				else:
+					raise Exception('Sorry, but the move you are attempting is illegal')
+		else:
+			raise Exception('Sorry, but the move you are attempting is illegal')
 
 	def normalMove(self, x, y, direction):
 		#movement rules

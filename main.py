@@ -49,11 +49,19 @@ def movePiece(x, y, direction):
 			print('Illegal move detected, please try again')
 
 # game loop
+b.normalMove(5,3,'topRight')
+b.normalMove(2,2,'botLeft')
 b.normalMove(2,4,'botLeft')
-b.normalMove(2,6,'botLeft')
-b.normalMove(5,5,'topRight')
 b.printBoard()
-print(b.normalTakeCheck(6,4))
+print(b.normalTakeCheck(4,4))
+print(b.getSquare(4,4))
+print(b.getSquare(2,2))
+b.normalTake(4,4,'topLeft')
+b.printBoard()
+print(b.getSquare(4,4))
+print(b.getSquare(2,2))
+b.printBoard()
+
 '''
 while True:
 	x = y = direc = 0
