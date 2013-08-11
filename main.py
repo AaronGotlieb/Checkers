@@ -42,16 +42,19 @@ def movePiece(x, y, direction):
 			b.normalMove(x,y,direction)
 		except Exception:
 			print('Illigal move detected, please try again')
-			#continue
 	else:
 		try:
 			b.royalMove(x,y,direction)
 		except Exception:
 			print('Illigal move detected, please try again')
-			#continue
 
 # game loop
-flag = True
+b.normalMove(2,4,'botLeft')
+b.normalMove(2,6,'botLeft')
+b.normalMove(5,5,'topRight')
+b.printBoard()
+print(b.normalTakeCheck(6,4))
+'''
 while True:
 	x = y = direc = 0
 	b.printBoard()
@@ -71,7 +74,7 @@ while True:
 for x in range (0,8):
 	for y in range(0,8):
 		b.getSquare(x,y)
-'''
+
 #b.normalMove(2,2,'botLeft')
 b.normalMove(2,0,'botRight')
 b.royalMove(2,6, 'botRight')

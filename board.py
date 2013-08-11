@@ -30,6 +30,7 @@ class board(object):
 	def openMoves(self):
 		# checks what moves are open for all pieces and updates the each piece object to represent
 		# what moves are avaliable within the piece object under 'openSpots'
+		# example output: [0, 0, 0, 0, 1, 3, 3, 3]
 		for x in range (0, 8):
 			for y in range (0, 8):
 				if (x+1 > 7 or y+1 > 7):
@@ -62,6 +63,7 @@ class board(object):
 				self.openMovesTranslator(x,y)
 
 	def royalMove(self, x, y, direction):
+		self.openMoves()
 		openSpots = self.boardArray[x][y].getOpenSpots()
 		if(direction == 'topLeft'):
 			openSpots = openSpots[0:2]
@@ -81,9 +83,28 @@ class board(object):
 		self.boardArray[openSpots[1]][openSpots[0]] = piece(openSpots[1],openSpots[0],1,a,b)
 		self.openMoves()
 
+	def normalTakeCheck(self, x, y):
+		self.openMoves()
+		openSpots = self.boardArray[x][y].getOpenSpots()
+		myColor = self.boardArray[x][y].getColor()
+		if(myColor == 'r'):
+			if(self.boardArray[y+1][x+1].getColor() == 'b' or self.boardArray[y+1][x-1].getColor() == 'b'): # 1 search ahead
+				if(self.boardArray[x+2][y+2].getColor() == 1 or self.boardArray[y+2][x-2].getColor() == 1):
+					return True
+		else:
+			if(myColor == 'b'):
+				if(self.boardArray[y-1][x+1].getColor() == 'r' or self.boardArray[y-1][x-1].getColor() == 'r'): # 1 search ahead
+					if(self.boardArray[x-2][y+2].getColor() == 1 or self.boardArray[y-2][x-2].getColor() == 1):
+						return True
+		return False
+
+
+
 	def normalMove(self, x, y, direction):
 		#movement rules
+		self.openMoves()
 		openSpots = self.boardArray[x][y].getOpenSpots()
+
 		if(direction == 'topLeft'):
 			openSpots = openSpots[0:2]
 			if(openSpots[0] == -1 and openSpots[1] == -1):
