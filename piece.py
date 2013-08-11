@@ -54,7 +54,7 @@ class piece(object):
 	def printPiece(self):
 		print('Location: (' , self.y, ',' , self.x , ') Is King:' , self.isKing ,'Color:' , self.pieceColor, 'Square:', self.square, 'openSpots:', self.openSpots)
 
-#avaiable moves
+#available moves
 	def topLeft(self, topLeft):
 		self.openSpots[0] = topLeft
 

@@ -41,12 +41,12 @@ def movePiece(x, y, direction):
 		try:
 			b.normalMove(x,y,direction)
 		except Exception:
-			print('Illigal move detected, please try again')
+			print('Illegal move detected, please try again')
 	else:
 		try:
 			b.royalMove(x,y,direction)
 		except Exception:
-			print('Illigal move detected, please try again')
+			print('Illegal move detected, please try again')
 
 # game loop
 b.normalMove(2,4,'botLeft')

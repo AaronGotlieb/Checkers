@@ -29,7 +29,7 @@ class board(object):
 
 	def openMoves(self):
 		# checks what moves are open for all pieces and updates the each piece object to represent
-		# what moves are avaliable within the piece object under 'openSpots'
+		# what moves are available within the piece object under 'openSpots'
 		# example output: [0, 0, 0, 0, 1, 3, 3, 3]
 		for x in range (0, 8):
 			for y in range (0, 8):
@@ -68,7 +68,7 @@ class board(object):
 		if(direction == 'topLeft'):
 			openSpots = openSpots[0:2]
 			if(openSpots[0] == -1 and openSpots[1] == -1):
-				raise Exception('Sorry, but that move is illigal')
+				raise Exception('Sorry, but that move is illegal')
 		if(direction == 'topRight'):
 			openSpots = openSpots[2:4]
 		if(direction == 'botLeft'):
@@ -84,8 +84,6 @@ class board(object):
 		self.openMoves()
 
 	def normalTakeCheck(self, x, y):
-		self.openMoves()
-		openSpots = self.boardArray[x][y].getOpenSpots()
 		myColor = self.boardArray[x][y].getColor()
 		if(myColor == 'r'):
 			if(self.boardArray[y+1][x+1].getColor() == 'b' or self.boardArray[y+1][x-1].getColor() == 'b'): # 1 search ahead
@@ -98,7 +96,14 @@ class board(object):
 						return True
 		return False
 
+	def normalTake(self,x,y,direction):
+		myColor = self.boardArray[x][y].getColor()
+		if(self.normalTakeCheck(x,y) == False)
+			raise Exception('Sorry, but the move you are attempting is illegal')
+		if(myColor == 'r'):
 
+
+		return True
 
 	def normalMove(self, x, y, direction):
 		#movement rules
@@ -108,7 +113,7 @@ class board(object):
 		if(direction == 'topLeft'):
 			openSpots = openSpots[0:2]
 			if(openSpots[0] == -1 and openSpots[1] == -1):
-				raise Exception('Sorry, but that move is illigal')
+				raise Exception('Sorry, but that move is illegal')
 		if(direction == 'topRight'):
 			openSpots = openSpots[2:4]
 		if(direction == 'botLeft'):
@@ -118,14 +123,14 @@ class board(object):
 		if(self.boardArray[x][y].getIsKing() == 0): #not king
 			if(self.boardArray[x][y].getColor() == 'r'): #red
 				if(direction == 'topLeft' or direction == 'topRight'):
-					raise Exception('Sorry, but that move is illigal')
+					raise Exception('Sorry, but that move is illegal')
 			if(self.boardArray[x][y].getColor() == 'b'): #black
 				if(direction == 'botRight' or direction == 'botLeft'):
-					raise Exception('Sorry, but that move is illigal')
+					raise Exception('Sorry, but that move is illegal')
 		tmp = self.boardArray[0][0].getIsKing  # really hacky way of taking care of the [0][0]
 		self.boardArray[0][0].changeKing(1337) # special case...
 		if(openSpots[0] == 0 and openSpots[1] == 0 and self.boardArray[openSpots[1]][openSpots[0]].getIsKing != 1337):
-			raise Exception('Sorry, but that move is illigal')
+			raise Exception('Sorry, but that move is illegal')
 		self.boardArray[0][0].changeKing(tmp)
 		# more tests will be needed above but for now...
 		# actual move
@@ -139,22 +144,22 @@ class board(object):
 		# openSlots = [topLeft, topRight, botLeft, botRight]  <== copied from readme
 		tmp = [0,0,0,0,0,0,0,0]
 		avaliable = self.boardArray[x][y].getOpenSpots()
-		if (avaliable[0] == 1): #top left avaliable
+		if (avaliable[0] == 1): #top left available
 			tmp[0] = y-1
 			tmp[1] = x-1
-		if (avaliable[1] == 1): #top right avaliable
+		if (avaliable[1] == 1): #top right available
 			tmp[2] = y+1
 			tmp[3] = x-1
-		if (avaliable[2] == 1): #bot left avaliable
+		if (avaliable[2] == 1): #bot left available
 			tmp[4] = y-1
 			tmp[5] = x+1
-		if (avaliable[3] == 1): #bot right avaliable
+		if (avaliable[3] == 1): #bot right available
 			tmp[6] = y+1
 			tmp[7] = x+1
 		self.boardArray[x][y].avaliableTranslate(tmp)
 
 	def setUp(self, board):
-	# sets up checkers board with 'r' and 'b' representing red and black respectivly
+	# sets up checkers board with 'r' and 'b' representing red and black respectively
 		for y in range (0, 8):
 			for x in range (0,8):
 				if (y % 2 == 1 and x % 2 == 1):
@@ -200,7 +205,6 @@ class board(object):
 					else:
 						board[x][y] = piece(x,y,0,0,0)
 		return board
-
 
 
 
