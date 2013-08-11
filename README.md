@@ -5,12 +5,12 @@ A Checkers game built in Python
 	require Python 3.0
 
 inheritance diagram:
-	
+
 
 	main.py
-            \
-	   board.py
-	       \		
+      \
+		 board.py
+	      \
 	     piece.py
 
 
