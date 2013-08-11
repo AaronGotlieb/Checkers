@@ -7,11 +7,11 @@ A Checkers game built in Python
 inheritance diagram:
 
 
-	main.py
-    \
-		board.py
-			\
-			piece.py
+main.py
+   \
+	board.py
+     \
+		piece.py
 
 
 Piece state codes:
