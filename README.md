@@ -74,13 +74,14 @@ HUMAN interface:
 	1) input (x,y) coordinates of the piece you want to move
 		 (not the location you want to move to!)
 
- 	2) type the direction you want to move the pice
- 		 4 allowed inputs [topLeft, topRight, botLeft, botRight]
+	2) type the direction you want to move the pice
+		 4 allowed inputs [topLeft, topRight, botLeft, botRight]
 
- 	bonus:
- 		example ==> if you want to move the red peice at point (0,2) to point (1,3)
- 								the input would be '0' (enter/return) '2' (enter/return)  botRight (enter/return)
+	bonus example:
+		 if you want to move the red peice at point (0,2) to point (1,3)
+		 the input would be '0' (enter/return) '2' (enter/return)  botRight
+		 (enter/return)
 
- 								well done!
+		 well done!
 
 
