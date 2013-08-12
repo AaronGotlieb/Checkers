@@ -77,6 +77,7 @@ while True:
 		print('Illigal move detected, please try again')
 		continue
 	b.printBoard()
+	self.isGameover()
 	break
 
 for x in range (0,8):

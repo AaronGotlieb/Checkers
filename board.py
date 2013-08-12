@@ -67,8 +67,6 @@ class board(object):
 		openSpots = self.boardArray[x][y].getOpenSpots()
 		if(direction == 'topLeft'):
 			openSpots = openSpots[0:2]
-			if(openSpots[0] == -1 and openSpots[1] == -1):
-				raise Exception('Sorry, but that move is illegal')
 		if(direction == 'topRight'):
 			openSpots = openSpots[2:4]
 		if(direction == 'botLeft'):
@@ -249,5 +247,21 @@ class board(object):
 						board[x][y] = piece(x,y,0,0,0)
 		return board
 
+		def isGameover(self):
+			r = 0
+			b = 0
+			for x in range (0, 8):
+				for y in range (0, 8):
+					color = self.boardArray[x][y].getColor()
+					if (color == 'r'):
+						r = r + 1
+					if (color == 'b'):
+						b = b + 1
+			if (b == 0):
+				print ('Congratulations black, you are the winner!')
+				return 'black'
+			if (r == 0):
+				print ('Congratulations red, you are the winner!')
+				return 'red'
 
 
