@@ -62,7 +62,7 @@ print(b.getSquare(4,4))
 print(b.getSquare(2,2))
 b.printBoard()
 
-'''
+
 while True:
 	x = y = direc = 0
 	b.printBoard()
@@ -71,15 +71,22 @@ while True:
 	y = coordinateCheck('y')
 	direc = direction()
 	#print(x , ' ' , y , ' ' , direction)
-	try:
-		movePiece(y,x,direc)
-	except Exception:
-		print('Illigal move detected, please try again')
-		continue
+	if(b.normalTakeCheck(y,x)):
+		try:
+			normalTake(y,x,direc)
+		except Exception:
+			print('Their is a piece that can be taken, please act on it!')
+			continue
+	else:
+		try:
+			movePiece(y,x,direc)
+		except Exception:
+			print('Illigal move detected, please try again')
+			continue
 	b.printBoard()
 	self.isGameover()
 	break
-
+'''
 for x in range (0,8):
 	for y in range(0,8):
 		b.getSquare(x,y)

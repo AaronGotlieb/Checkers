@@ -264,4 +264,8 @@ class board(object):
 				print ('Congratulations red, you are the winner!')
 				return 'red'
 
+		def makeKing(self,x, y):
+			self.boardArray[x][y].changeKing(1)
+
+
 
