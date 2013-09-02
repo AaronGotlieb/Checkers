@@ -102,7 +102,6 @@ class board(object):
 
 	def normalTake(self,x,y,direction):
 		myColor = self.boardArray[y][x].getColor()
-		#piece = self.boardArray[y][x]
 
 		if(myColor == 'r'):
 			if(direction == 'topRight' or direction == 'topLeft'):
@@ -247,25 +246,25 @@ class board(object):
 						board[x][y] = piece(x,y,0,0,0)
 		return board
 
-		def isGameover(self):
-			r = 0
-			b = 0
-			for x in range (0, 8):
-				for y in range (0, 8):
-					color = self.boardArray[x][y].getColor()
-					if (color == 'r'):
-						r = r + 1
-					if (color == 'b'):
-						b = b + 1
-			if (b == 0):
-				print ('Congratulations black, you are the winner!')
-				return 'black'
-			if (r == 0):
-				print ('Congratulations red, you are the winner!')
-				return 'red'
+	def isGameover(self):
+		r = 0
+		b = 0
+		for x in range (0, 8):
+			for y in range (0, 8):
+				color = self.boardArray[x][y].getColor()
+				if (color == 'r'):
+					r = r + 1
+				if (color == 'b'):
+					b = b + 1
+		if (b == 0):
+			print ('Congratulations black, you are the winner!')
+			return 'end'
+		if (r == 0):
+			print ('Congratulations red, you are the winner!')
+			return 'end'
 
-		def makeKing(self,x, y):
-			self.boardArray[x][y].changeKing(1)
+	def makeKing(self,x, y):
+		self.boardArray[x][y].changeKing(1)
 
 
 

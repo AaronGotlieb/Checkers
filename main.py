@@ -49,6 +49,7 @@ def movePiece(x, y, direction):
 			print('Illegal move detected, please try again')
 
 # game loop
+'''
 b.normalMove(5,3,'topRight')
 b.normalMove(2,2,'botLeft')
 b.normalMove(2,4,'botLeft')
@@ -61,10 +62,12 @@ b.printBoard()
 print(b.getSquare(4,4))
 print(b.getSquare(2,2))
 b.printBoard()
-
+'''
 
 while True:
 	x = y = direc = 0
+	if (b.isGameover() == 'end'):
+		break
 	b.printBoard()
 	print('enter a piece and where you want to move it.')
 	x = coordinateCheck('x') # pass in name of number so its user identifiable
@@ -75,7 +78,7 @@ while True:
 		try:
 			normalTake(y,x,direc)
 		except Exception:
-			print('Their is a piece that can be taken, please act on it!')
+			print('There is a piece that can be taken, please act on it!')
 			continue
 	else:
 		try:
@@ -83,9 +86,8 @@ while True:
 		except Exception:
 			print('Illigal move detected, please try again')
 			continue
-	b.printBoard()
-	self.isGameover()
-	break
+	#b.printBoard()
+	#break
 '''
 for x in range (0,8):
 	for y in range(0,8):
